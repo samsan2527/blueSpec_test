@@ -38,6 +38,14 @@ const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const overlay = document.querySelector("[data-overlay]");
 
 const toggleNavbar = function () {
+    console.log("toggleNavbar");
+    if (document.body.classList.contains("nav-active")) {
+        console.log("nav-active");
+    }
+    else {
+        console.log("not-active");
+        document.body.classList.toggle("nav-active");
+    }
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
   document.body.classList.toggle("nav-active");
