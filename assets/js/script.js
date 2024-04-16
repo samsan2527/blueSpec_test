@@ -10,6 +10,7 @@
 
 const preloader = document.querySelector("[data-preaload]");
 
+
 window.addEventListener("load", function () {
   preloader.classList.add("loaded");
   document.body.classList.add("loaded");
@@ -46,6 +47,13 @@ const toggleNavbar = function () {
         console.log("not-active");
         document.body.classList.toggle("nav-active");
     }
+    if (overlay.classList.contains("active")) {
+        console.log("active");
+    }
+    else {
+        console.log("not active");
+        overlay.classList.toggle("active");
+    }
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
   document.body.classList.toggle("nav-active");
@@ -65,11 +73,14 @@ const backTopBtn = document.querySelector("[data-back-top-btn]");
 let lastScrollPos = 0;
 
 const hideHeader = function () {
+    console.log("lastScrollPos"+lastScrollPos);
+    console.log("window.scrollY" + window.scrollY);
   const isScrollBottom = lastScrollPos < window.scrollY;
   if (isScrollBottom) {
     header.classList.add("hide");
   } else {
-    header.classList.remove("hide");
+      header.classList.remove("hide");
+      console.log("bottom");
   }
 
   lastScrollPos = window.scrollY;
@@ -78,9 +89,11 @@ const hideHeader = function () {
 window.addEventListener("scroll", function () {
   if (window.scrollY >= 50) {
     header.classList.add("active");
-    backTopBtn.classList.add("active");
+      backTopBtn.classList.add("active");
+      console.log("hdr not call");
     hideHeader();
   } else {
+      console.log("hdr call");
     header.classList.remove("active");
     backTopBtn.classList.remove("active");
   }
